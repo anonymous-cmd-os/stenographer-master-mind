@@ -20,7 +20,7 @@ interface Volume {
   id: string;
   title: string;
   description: string;
-  volumeNumber: number;
+  volumeNumber: string | number;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   pdfUrl: string;
   isAvailable: boolean;
@@ -32,9 +32,9 @@ interface Volume {
 const KC_VOLUMES: Volume[] = [
   {
     id: 'vol1',
-    title: 'KC Volume 1 - Foundation Principles',
+    title: 'KC Volume 1-6 - Foundation Principles',
     description: 'Introduction to stenographic theory, basic strokes, and fundamental principles of shorthand writing.',
-    volumeNumber: 1,
+    volumeNumber: '1-6',
     difficulty: 'beginner',
     pdfUrl: 'https://drive.google.com/file/d/1scgvnHZHPOzedpvKScmfjuviNndtbp1Z/preview',
     isAvailable: true,
@@ -44,9 +44,9 @@ const KC_VOLUMES: Volume[] = [
   },
   {
     id: 'vol2',
-    title: 'KC Volume 2 - Consonant Combinations',
+    title: 'KC Volume 7-12 - Consonant Combinations',
     description: 'Advanced consonant blends, chord formations, and speed development exercises.',
-    volumeNumber: 2,
+    volumeNumber: '7-12',
     difficulty: 'beginner',
     pdfUrl: 'https://drive.google.com/file/d/1yb_sya6b7XPP_speNs6AQFE8nRIR0ItJ/preview',
     isAvailable: true,
@@ -56,9 +56,9 @@ const KC_VOLUMES: Volume[] = [
   },
   {
     id: 'vol3',
-    title: 'KC Volume 3 - Vowel Mastery',
+    title: 'KC Volume 13-18 - Vowel Mastery',
     description: 'Complete vowel system, diphthongs, and complex vowel combinations for professional writing.',
-    volumeNumber: 3,
+    volumeNumber: '13-18',
     difficulty: 'intermediate',
     pdfUrl: 'https://drive.google.com/file/d/1KmttQ9He-AxvMuUwLTaB5j5jI29O1h3m/preview',
     isAvailable: true,
@@ -68,9 +68,9 @@ const KC_VOLUMES: Volume[] = [
   },
   {
     id: 'vol4',
-    title: 'KC Volume 4 - Professional Phrases',
+    title: 'KC Volume 19-24 - Professional Phrases',
     description: 'Business terminology, legal phrases, and advanced shorthand techniques for professional use.',
-    volumeNumber: 4,
+    volumeNumber: '19-24',
     difficulty: 'intermediate',
     pdfUrl: 'https://drive.google.com/file/d/1o4r_3wetTuzObMXBpVxpblHpRuIltnsi/preview',
     isAvailable: true,
