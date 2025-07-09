@@ -4,9 +4,11 @@ import { ProgressDashboard } from '@/components/ProgressDashboard';
 import { LessonCard } from '@/components/LessonCard';
 import { PracticeArea } from '@/components/PracticeArea';
 import { StenoKeyboard } from '@/components/StenoKeyboard';
+import { KCVolumes } from '@/components/KCVolumes';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { 
   Play, 
@@ -128,6 +130,7 @@ const Index = () => {
   const [selectedLesson, setSelectedLesson] = useState<string | null>(null);
   const [practiceText, setPracticeText] = useState(PRACTICE_TEXTS[0]);
   const [pressedKeys, setPressedKeys] = useState<Set<string>>(new Set());
+  const [lessonsTab, setLessonsTab] = useState<'interactive' | 'kc-volumes'>('interactive');
   const { toast } = useToast();
 
   const userStats = {
@@ -248,21 +251,48 @@ const Index = () => {
   const renderLessons = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gradient mb-4">Stenography Lessons</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Master stenography through our comprehensive lesson system. Progress from basic theory to advanced professional techniques.
+        <h2 className="text-3xl font-bold text-gradient mb-4">Stenography Learning Center</h2>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Master stenography through our comprehensive learning system. Choose between interactive lessons 
+          or study with professional KC training volumes used by stenography schools worldwide.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {SAMPLE_LESSONS.map((lesson) => (
-          <LessonCard
-            key={lesson.id}
-            lesson={lesson}
-            onStart={handleLessonStart}
-          />
-        ))}
-      </div>
+      <Tabs value={lessonsTab} onValueChange={(value) => setLessonsTab(value as 'interactive' | 'kc-volumes')}>
+        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+          <TabsTrigger value="interactive" className="flex items-center gap-2">
+            <Target className="h-4 w-4" />
+            Interactive Lessons
+          </TabsTrigger>
+          <TabsTrigger value="kc-volumes" className="flex items-center gap-2">
+            <BookOpen className="h-4 w-4" />
+            KC Training Volumes
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="interactive" className="space-y-6">
+          <div className="text-center mb-6">
+            <h3 className="text-xl font-semibold mb-2">Interactive Learning System</h3>
+            <p className="text-muted-foreground">
+              Guided lessons with real-time feedback and progress tracking
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SAMPLE_LESSONS.map((lesson) => (
+              <LessonCard
+                key={lesson.id}
+                lesson={lesson}
+                onStart={handleLessonStart}
+              />
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="kc-volumes" className="space-y-6">
+          <KCVolumes />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 
