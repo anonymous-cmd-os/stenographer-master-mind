@@ -77,48 +77,8 @@ const KC_VOLUMES: Volume[] = [
     estimatedTime: 200,
     topics: ['Business Terms', 'Legal Phrases', 'Professional Techniques'],
     progress: 0
-  },
-  {
-    id: 'vol5',
-    title: 'KC Volume 5 - Speed Development',
-    description: 'Advanced speed techniques and dictation practice for achieving higher WPM rates.',
-    volumeNumber: 5,
-    difficulty: 'advanced',
-    pdfUrl: '',
-    isAvailable: false,
-    estimatedTime: 240,
-    topics: ['Speed Techniques', 'Dictation Practice', 'WPM Development'],
-    progress: 0
-  },
-  {
-    id: 'vol6',
-    title: 'KC Volume 6 - Court Reporting',
-    description: 'Specialized techniques for court reporting, legal terminology, and realtime writing.',
-    volumeNumber: 6,
-    difficulty: 'advanced',
-    pdfUrl: '',
-    isAvailable: false,
-    estimatedTime: 300,
-    topics: ['Court Reporting', 'Legal Terminology', 'Realtime Writing'],
-    progress: 0
   }
 ];
-
-// Generate placeholder volumes 7-24
-for (let i = 7; i <= 24; i++) {
-  KC_VOLUMES.push({
-    id: `vol${i}`,
-    title: `KC Volume ${i} - Advanced Training ${i}`,
-    description: `Advanced stenographic techniques and specialized training for volume ${i}.`,
-    volumeNumber: i,
-    difficulty: 'advanced',
-    pdfUrl: '',
-    isAvailable: false,
-    estimatedTime: 180 + (i * 10),
-    topics: ['Advanced Techniques', 'Specialized Training', 'Expert Level'],
-    progress: 0
-  });
-}
 
 interface PDFViewerProps {
   volume: Volume;
@@ -199,7 +159,7 @@ export const KCVolumes: React.FC = () => {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-primary mb-1">24</div>
+          <div className="text-2xl font-bold text-primary mb-1">4</div>
           <div className="text-sm text-muted-foreground">Total Volumes</div>
         </Card>
         <Card className="p-4 text-center">
